@@ -1,0 +1,18 @@
+@import "reset";
+@import "header";
+@import "accommodation";
+@import "dormitories";
+@import "footer";
+
+@font-face {
+    font-family: "Podkova-Regular";
+    src: url("/static/fonts/Podkova-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+  }
+
+body {
+    font-family: 'Podkova', serif;
+    overflow-x: hidden;
+
+}

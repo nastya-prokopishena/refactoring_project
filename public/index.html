@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Podkova&display=swap" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.6/ejs.min.js"></script>
+    <title>Dormitories</title>
+</head>
+<body>
+    <div class="page-conainer">
+        <header class="header" id="head">
+            
+            <div class="header__menu">
+                <nav class="header__navigation">
+                    <div class="navigation-element">
+                        <a href="#head" class="navigation__element-link">Головна</a>
+                    </div>
+                    <div class="navigation__element">
+                        <a href="#dormitories" class="navigation__element-link">Гуртожитки</a>
+                    </div>
+                    <div class="navigation__element">
+                        <a href="#accommodation" class="navigation__element-link">Поселення</a>
+                    </div>
+                    <div class="navigation__element">
+                        <a href="#contact" class="navigation__element-link">Контакти</a>
+                    </div>
+                </nav>
+                <a href="#accommodation" class="menu__button">Подати заявку</a>
+            </div>
+            <div class="header__main-info">
+                <h1 class="main-info__title">
+                    Студентське містечко
+                </h1>
+                <p class="main-info__text">
+                    це частина Львівського національного університету імені Івана Франка. Діяльність містечка регулюється законами України, статутом університету, внутрішніми правилами, наказами ректора та цим Положенням.
+                </p>
+                <img src="" alt="" class="info__img">
+
+            </div>
+            <div class="header__content">
+                <div class="content__first-part">
+                    <p class="content__text">
+                        Це місце призначене для тимчасового проживання студентів, аспірантів, слухачів, стажистів, докторантів, а також інших гостей університету, навіть іноземних громадян.
+                    </p>
+                </div>
+                <div class="content__second-part">
+                    <p class="content__text">
+                        Директор містечка відповідає за розвиток та керівництво гуртожитками, організацію поселення, дотримання санітарних та пожежних норм, та покращення структури містечка.
+                    </p>
+                </div>
+            </div>
+        </header>
+
+        <div class="dormitories" id="dormitories">
+            <h2 class="dormitories__title">наші гуртожитки</h2>
+            <div class="dormitories__content">
+                <div class="content__box" id="dormitory_1_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">1</p>
+                </div>
+                <div class="content__box" id="dormitory_2_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">2</p>
+                </div>
+                <div class="content__box" id="dormitory_3_trigger">
+                    <p class="content__box-title" >Гуртожиток</p>
+                    <p class="content__box-number">3</p>
+                </div>
+                <div class="content__box" id="dormitory_4_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">4</p>
+                </div>
+                <div class="content__box" id="dormitory_5_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">5</p>
+                </div>
+                <div class="content__box" id="dormitory_6_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">6</p>
+                </div>
+                <div class="content__box" id="dormitory_7_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">7</p>
+                </div>
+                <div class="content__box" id="dormitory_8_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">8</p>
+                </div>
+                <div class="content__box" id="dormitory_9_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">9</p>
+                </div>
+                <div class="content__box" id="dormitory_10_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">10</p>
+                </div>
+                <div class="content__box" id="dormitory_11_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">11</p>
+                </div>
+                <div class="content__box" id="dormitory_12_trigger">
+                    <p class="content__box-title">Гуртожиток</p>
+                    <p class="content__box-number">12</p>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_1">
+                <p class="content-describtion__title"> гуртожиток 1  </p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_1">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_2">
+                <p class="content-describtion__title">гуртожиток 2 </p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_3">
+                <p class="content-describtion__title">гуртожиток 3 </p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_4">
+                <p class="content-describtion__title">гуртожиток 4 </p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_4">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_5">
+                <p class="content-describtion__title">гуртожиток  5</p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_5">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_6">
+                <p class="content-describtion__title">гуртожиток 6 </p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_6">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_7">
+                <p class="content-describtion__title">гуртожиток 7</p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_7">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_8">
+                <p class="content-describtion__title">гуртожиток 8 </p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_8">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_9">
+                <p class="content-describtion__title">гуртожиток 9 </p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_9">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_10">
+                <p class="content-describtion__title">гуртожиток  10</p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_10">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_11">
+                <p class="content-describtion__title">гуртожиток 11 </p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_11">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+            <div class="dormitories__content-describtion" id="dormitory_12">
+                <p class="content-describtion__title">гуртожиток  12</p>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Адреса
+                    </p>
+                    <span class="content-describtion__box-text address"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Вартість проживання
+                    </p>
+                    <span class="content-describtion__box-text price"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Телефон
+                    </p>
+                    <span class="content-describtion__box-text phone"></span>
+                </div>
+                <div class="content-describtion__box">
+                    <p class="content-describtion__box-title">
+                        Хто проживає
+                    </p>
+                    <span class="content-describtion__box-text residents"></span>
+                </div>
+                <div class="content-describtion__box-closer" id="closer_12">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 45 45" fill="none">
+                        <path d="M11.0186 11.019L33.0562 33.0567" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M11.0186 33.0564L33.0562 11.0187" stroke="#453324" stroke-width="3" stroke-linecap="round"/>
+                      </svg>
+                </div>
+            </div>
+        </div>
+        <div class="accommodation" id="accommodation">
+            <h2 class="accommodation__title">Поселення</h2>
+            <div class="accommodation__content">
+                <div class="accommodation__info">
+                    <p class="accommodation__info-title">
+                        для поселення потрібно
+                    </p>
+                    <div class="accommodation__info-list">
+                        <ul class="notitia">
+                            <li class="notitia__item">
+                                <div class="notitia__item-text">
+                                    <h3>Заповнити і подати заяву</h3>
+                                </div>
+                            </li>
+                            <li class="notitia__item">
+                                <div class="notitia__item-text">
+                                    <h3>Оплатити проживання</h3>
+                                </div>
+                            </li>
+                            <li class="notitia__item">
+                                <div class="notitia__item-text">
+                                    <h3>Надати квитанцію і 2 фотографії 3х4 см</h3>
+                                </div>
+                            </li>
+                            <li class="notitia__item">
+                                <div class="notitia__item-text">
+                                    <h3>Укласти Угоду на проживання в гуртожитку</h3>
+                                </div>
+                            </li>
+                            <li class="notitia__item">
+                                <div class="notitia__item-text">
+                                    <h3>Ознайомитись з правилами гуртожитка і підписати їх</h3>
+                                </div>
+                            </li>
+                            <li class="notitia__item">
+                                <div class="notitia__item-text">
+                                    <h3>Здійснити реєстрацію у гуртожитку</h3>
+                                </div>
+                            </li>
+                            <li class="notitia__item">
+                                <div class="notitia__item-text">
+                                    <h3>Для чоловіків - встати на військовий облік</h3>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="accommodation__form">
+                    <h3 class="accommodation__form-title">подати заявку</h3>
+                    <form class="accommodation__form-content" action="/submit_application" method="POST" id="applicationForm">
+                        <div class="accommodation__form-row">
+                            <input class="accommodation__form-item" type="text" id="last_name" name="last_name" placeholder="Прізвище" required>
+                            <input class="accommodation__form-item" type="text" id="first_name" name="first_name" placeholder="Ім'я" required>
+                            <input class="accommodation__form-item" type="text" id="middle_name" name="middle_name" placeholder="По батькові" required>
+                            <input class="accommodation__form-item" type="text" id="home_address" name="home_address" placeholder="Домашня назва вулиці" required>
+                            <input class="accommodation__form-item" type="text" id="home_street_number" name="home_street_number" placeholder="Номер вулиці" required>
+                            <input class="accommodation__form-item" type="text" id="home_campus_number" name="home_campus_number" placeholder="Номер корпусу" required>
+                            <input class="accommodation__form-item" type="text" id="home_city" name="home_city" placeholder="Назва міста прописки" required>
+                            <input class="accommodation__form-item" type="text" id="home_region" name="home_region" placeholder="Назва області прописки" required>
+                            <input class="accommodation__form-item" type="email" id="email" name="email" placeholder="Електронна Пошта" required>
+                            <input class="accommodation__form-item" type="date" id="date_of_birth" name="date_of_birth" placeholder="Дата народження" required>
+                            <input class="accommodation__form-item" type="tel" id="phone_number" name="phone_number" placeholder="Номер телефону" required>
+                            <select class="accommodation__form-item" id="faculty_name" name="faculty_name" placeholder="Факультет"> 
+                                <option value="item.id" disabled selected> Факультет</option>
+                            </select>
+                            <select class="accommodation__form-item" id="specialty_name" name="specialty_name" placeholder="Спеціальність"> 
+                                <option value="item.id" disabled selected>Спеціальність</option>
+                            </select>
+                            <input class="accommodation__form-item" type="text" id="year_of_study" name="year_of_study" placeholder="Курс" required>
+                        </div>
+                        <select class="accommodation__form-item" id="benefit_name" name="benefit_name" placeholder="Пільга">
+                            <option value="item.id" disabled selected>Пільга</option>
+                        </select>
+                        </select>
+                        <input class="accommodation__form-button" type="submit" id="submit" value="Подати заявку">
+                    </form>                    
+                </div>
+            </div>
+        </div>
+        <footer class="footer" id="contact">
+            <div class="footer__info">
+                <div class="footer__info-box">
+                    <p class="footer__info-title">
+                        Адреса
+                    </p>
+                    <p class="footer__info-text">
+                        м. Львів, вул. Пасічна, 62
+                    </p>
+                </div>
+                <div class="footer__info-box">
+                    <p class="footer__info-title">
+                        Контактна особа
+                    </p>
+                    <p class="footer__info-text">
+                        Микита Мирон Михайлович                    </p>
+                </div>
+                <div class="footer__info-box">
+                    <p class="footer__info-title">
+                        e-mail
+                    </p>
+                    <p class="footer__info-text">
+                        campus.lnu@gmail.com
+                    </p>
+                </div>
+                <div class="footer__info-box">
+                    <p class="footer__info-title">
+                        Телефон
+                    </p>
+                    <p class="footer__info-text">
+                        +38(032)271-21-33                    
+                    </p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/ejs@3.1.6/ejs.min.js"></script>
+    <script src="../static/script/dormitories.js"></script>
+    <script src="../static/script/select.js"></script>
+    <script src="../static/script/navigation.js"></script>
+</body>
+</html>
