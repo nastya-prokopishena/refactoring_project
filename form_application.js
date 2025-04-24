@@ -144,6 +144,7 @@ const Price = sequelize.define('Price', {
 );
 
 // Added the fetchData function for GET routes
+// Introduce Assertion- Adding more detailed error handling
 async function fetchData(Model, attributes, where = {}) {
   try {
     const data = await Model.findAll({ attributes, where });
@@ -236,7 +237,8 @@ app.get(ROUTES.PRICE, async (req, res) => {
   }
 });
 
-//
+// Extract Method - splitting the post request into smaller functions
+// Introduce Assertion- Adding more detailed error handling
 
 async function validateReferences({ faculty_name, specialty_name, benefit_name }) {
   const [faculty, specialty, benefit] = await Promise.all([
