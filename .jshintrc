@@ -1,0 +1,8 @@
+{
+    "node": true,
+    "esversion": 12,
+    "maxerr": 50,
+    "complexity": true, 
+    "undef": true,
+    "unused": true
+  }
