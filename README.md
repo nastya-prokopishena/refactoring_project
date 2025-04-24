@@ -64,7 +64,7 @@
 ### **Дубльований код**
 
 #### Проблема:
-У файлі select.js функції fetchDataAndPopulateSelect і fetchSpecialtiesByFacultyId містять схожу логіку для заповнення елементів <select> даними, отриманими з сервера
+У файлі select.js функції fetchDataAndPopulateSelect і fetchSpecialtiesByFacultyId містять схожу логіку для заповнення елементів select даними, отриманими з сервера
 
 #### Метод рефакторингу для вирішення:
 - *Duplicate Code* — витягнення спільної логіки в окрему функцію populateSelectFromData, яка використовується обома функціями
