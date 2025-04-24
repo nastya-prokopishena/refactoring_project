@@ -3,6 +3,17 @@ const { Sequelize, DataTypes } = require('sequelize');
 const path = require('path');
 
 const app = express();
+// Replacing magic numbers and strings with constants
+const PORT = 5500;
+const ROUTES = {
+  FACULTIES: '/fetch-select-data/faculties',
+  SPECIALTIES: '/fetch-select-data/specialties/:facultyId',
+  BENEFITS: '/fetch-select-data/benefits',
+  DORMITORIES: '/fetch-select-data/dormitories/:dormitoryId',
+  PRICE: '/fetch-select-data/price/:priceId',
+  SUBMIT_APPLICATION: '/submit_application',
+  PRICES: '/prices',
+};
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
@@ -148,12 +159,12 @@ async function fetchData(Model, attributes, where = {}) {
   }
 }
 // Роути для отримання даних та обробки заявок
-app.get('/fetch-select-data/faculties', async (req, res) => {
+app.get(ROUTES.FACULTIES, async (req, res) => {
   const { status, body } = await fetchData(Faculty, ['faculty_id', 'name']);
   res.status(status).json(body);
 });
 
-app.get('/fetch-select-data/specialties/:facultyId', async (req, res) => {
+app.get(ROUTES.SPECIALTIES, async (req, res) => {
   const facultyId = req.params.facultyId;
 
   try {
@@ -181,13 +192,13 @@ app.get('/fetch-select-data/specialties/:facultyId', async (req, res) => {
 
 
 
-app.get('/fetch-select-data/benefits', async (req, res) => {
+app.get(ROUTES.BENEFITS, async (req, res) => {
   const { status, body } = await fetchData(Benefit, ['benefit_id', 'name']);
   res.status(status).json(body);
 });
 
 // Обробник запиту для отримання даних гуртожитків за ідентифікатором
-app.get('/fetch-select-data/dormitories/:dormitoryId', async (req, res) => {
+app.get(ROUTES.DORMITORIES, async (req, res) => {
   const dormitoryId = req.params.dormitoryId;
 
   try {
@@ -206,7 +217,7 @@ app.get('/fetch-select-data/dormitories/:dormitoryId', async (req, res) => {
   }
 });
 
-app.get('/fetch-select-data/price/:priceId', async (req, res) => {
+app.get(ROUTES.PRICE, async (req, res) => {
   const priceId = req.params.priceId;
 
   try {
@@ -227,7 +238,7 @@ app.get('/fetch-select-data/price/:priceId', async (req, res) => {
 
 
 
-app.post('/submit_application', async (req, res) => {
+app.post(ROUTES.SUBMIT_APPLICATION, async (req, res) => {
   try {
     const {
       first_name,
@@ -285,7 +296,7 @@ app.post('/submit_application', async (req, res) => {
 });
 
 
-app.get('/prices', async (req, res) => {
+app.get(ROUTES.PRICES, async (req, res) => {
   const { status, body } = await fetchData(Price, ['price_id', 'price_amount']);
   res.status(status).json(body);
 });
@@ -295,7 +306,7 @@ sequelize.authenticate()
   .then(() => {
     console.log('Connection has been established successfully.');
 
-    app.listen(5500, () => {
+    app.listen(PORT, () => {
       console.log('Server is running on port 5500');
     });
   })
