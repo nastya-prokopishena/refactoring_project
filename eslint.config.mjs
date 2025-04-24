@@ -25,4 +25,10 @@ export default [
       },
     },
   },
+  // Introduce Local Extension(Undefined Variables)
+  {
+    "env": {
+      "node": true
+    }
+  }  
 ];
