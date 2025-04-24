@@ -1,4 +1,4 @@
-const express = re('express');
+const express = require('express');
 const { Sequelize, DataTypes } = require('sequelize');
 const path = require('path');
 
