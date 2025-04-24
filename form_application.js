@@ -236,65 +236,53 @@ app.get(ROUTES.PRICE, async (req, res) => {
   }
 });
 
+//
 
+async function validateReferences({ faculty_name, specialty_name, benefit_name }) {
+  const [faculty, specialty, benefit] = await Promise.all([
+    Faculty.findOne({ where: { faculty_id: faculty_name } }),
+    Specialty.findOne({ where: { specialty_id: specialty_name } }),
+    Benefit.findOne({ where: { benefit_id: benefit_name } }),
+  ]);
+  if (!faculty || !specialty || !benefit) {
+    throw new Error('Невірні або відсутні дані для створення заявки');
+  }
+  return {
+    faculty_id: faculty.faculty_id,
+    specialty_id: specialty.specialty_id,
+    benefit_id: benefit.benefit_id,
+  };
+}
+
+async function createApplication(data) {
+  return Application.create(data);
+}
 
 app.post(ROUTES.SUBMIT_APPLICATION, async (req, res) => {
   try {
     const {
-      first_name,
-      middle_name,
-      last_name,
-      date_of_birth,
-      home_address,
-      home_street_number,
-      home_campus_number,
-      home_city,
-      home_region,
-      phone_number,
-      email,
-      faculty_name,
-      specialty_name,
-      benefit_name,
+      first_name, middle_name, last_name, date_of_birth, home_address,
+      home_street_number, home_campus_number, home_city, home_region,
+      phone_number, email, faculty_name, specialty_name, benefit_name,
     } = req.body;
 
-
-    // Отримання відповідних ID з бази даних за обраними назвами
-    const faculty = await Faculty.findOne({ where: { faculty_id: faculty_name } });
-    const specialty = await Specialty.findOne({ where: { specialty_id: specialty_name } });
-    const benefit = await Benefit.findOne({ where: { benefit_id: benefit_name } });
-
-    const faculty_id = faculty ? faculty.faculty_id : null;
-    const specialty_id = specialty ? specialty.specialty_id : null;
-    const benefit_id = benefit ? benefit.benefit_id : null;
-
-    if (!faculty_id || !specialty_id || !benefit_id) {
-      return res.status(400).json({ error: 'Невірні або відсутні дані для створення заявки.' });
+    if (!first_name || !last_name || !phone_number || !email) {
+      return res.status(400).json({ error: 'Відсутні обов’язкові поля: ім’я, прізвище, телефон або email' });
     }
+    
+    const refs = await validateReferences({ faculty_name, specialty_name, benefit_name });
+    const applicationData = {
+      first_name, middle_name, last_name, date_of_birth, home_address,
+      home_street_number, home_campus_number, home_city, home_region,
+      phone_number, email, ...refs,
+    };
 
-    // Створення нової заявки з отриманими ID
-    const newApplication = await Application.create({
-      first_name,
-      middle_name,
-      last_name,
-      date_of_birth,
-      home_address,
-      home_street_number,
-      home_campus_number,
-      home_city,
-      home_region,
-      phone_number,
-      email,
-      faculty_id,
-      specialty_id,
-      benefit_id,
-    });
-
+    await createApplication(applicationData);
     res.json({ message: 'Заявка успішно подана' });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    res.status(400).json({ error: error.message });
   }
 });
-
 
 app.get(ROUTES.PRICES, async (req, res) => {
   const { status, body } = await fetchData(Price, ['price_id', 'price_amount']);
