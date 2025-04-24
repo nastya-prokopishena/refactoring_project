@@ -149,12 +149,12 @@ async function fetchData(Model, attributes, where = {}) {
   try {
     const data = await Model.findAll({ attributes, where });
     if (!data.length && Object.keys(where).length) {
-      return { status: 404, body: { error: 'Дані не знайдено' } };
+      throw new Error('Дані не знайдено');
     }
     return { status: 200, body: data };
   } catch (error) {
     if (error.name === 'SequelizeDatabaseError') {
-      return { status: 500, body: { error: 'Помилка бази даних' } };
+      throw new Error('Помилка бази даних');
     }
     return { status: 500, body: { error: error.message } };
   }
@@ -173,9 +173,9 @@ app.get(ROUTES.SPECIALTIES, async (req, res) => {
     const faculty = await Faculty.findOne({
       where: { faculty_id: facultyId }
     });
-
+    // Replace Error Code with Exception
     if (!faculty) {
-      return res.status(404).json({ error: `Факультет з ID ${facultyId} не знайдено` });
+      throw new Error(`Факультет з ID ${facultyId} не знайдено`);
     }
 
     // Якщо facultyId існує, витягуємо спеціальності
@@ -184,9 +184,13 @@ app.get(ROUTES.SPECIALTIES, async (req, res) => {
       attributes: ['specialty_id', 'name'] 
     });
 
-    res.json(specialties);
+    res.status(200).json(specialties);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    if (error.message.includes('не знайдено')) {
+      res.status(404).json({ error: error.message });
+    } else {
+      res.status(500).json({ error: 'Внутрішня помилка сервера' });
+    }
   }
 });
 
@@ -209,7 +213,7 @@ app.get(ROUTES.DORMITORIES, async (req, res) => {
     });
 
     if (!dormitoryData) {
-      return res.status(404).json({ error: 'Дані для гуртожитку не знайдено' });
+      throw new Error(`Гуртожиток з ID ${dormitoryId} не знайдено`);
     }
 
     res.json(dormitoryData);
@@ -228,7 +232,7 @@ app.get(ROUTES.PRICE, async (req, res) => {
     });
 
     if (!priceData) {
-      return res.status(404).json({ error: 'Дані про ціну не знайдено' });
+      throw new Error(`Ціна з ID ${priceId} не знайдена`);
     }
 
     res.json(priceData);
