@@ -78,6 +78,8 @@ async function createApplication(applicationData) {
 }
 
 router.post(ROUTES.SUBMIT_APPLICATION, async (req, res) => {
+  const memoryBefore = process.memoryUsage().heapUsed;
+  console.time('submit_application_time');
   try {
     const appData = new ApplicationData(req.body);
 
@@ -90,6 +92,10 @@ router.post(ROUTES.SUBMIT_APPLICATION, async (req, res) => {
     res.json({ message: 'Заявка успішно подана' });
   } catch (error) {
     res.status(400).json({ error: error.message });
+  } finally {
+    console.timeEnd('submit_application_time');
+    const memoryAfter = process.memoryUsage().heapUsed;
+    console.log(`Memory Usage: Before: ${memoryBefore} After: ${memoryAfter}`);
   }
 });
 

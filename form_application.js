@@ -8,8 +8,7 @@ const specialtyRouter = require('./routes/specialtyRouter');
 const benefitRouter = require('./routes/benefitRouter');
 const dormitoryRouter = require('./routes/dormitoryRouter');
 const priceRouter = require('./routes/priceRouter');
-const applicationRouter = require('./routes/applicationRouter');
-
+const { router: applicationRouter } = require('./routes/applicationRouter');
 const app = express();
 const PORT = 5500;
 

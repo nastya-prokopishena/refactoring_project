@@ -9,7 +9,8 @@ const ROUTES = {
 
 router.get(ROUTES.DORMITORIES, async (req, res) => {
   const dormitoryId = req.params.dormitoryId;
-
+  console.time('fetch_dormitories_time');
+  console.log('Memory Usage:', process.memoryUsage());
   try {
     const dormitoryData = await Dormitories.findOne({
       where: { dormitory_id: dormitoryId },
@@ -24,6 +25,8 @@ router.get(ROUTES.DORMITORIES, async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+  console.timeEnd('fetch_dormitories_time'); 
+  console.log('Memory Usage after response:', process.memoryUsage());
 });
 
 module.exports = router;

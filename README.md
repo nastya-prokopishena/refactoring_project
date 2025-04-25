@@ -164,3 +164,39 @@
 - *Функціональність*: Використання виключень для обробки помилок дозволяє чітко розмежувати нормальний потік виконання та обробку помилок.
 
 - *Покращення*: Це покращує структуру коду, роблячи його зрозумілішим і надійнішим у разі помилок.
+
+
+### Query Execution Times and Memory Usage
+
+| Query Description                             | Execution Time (ms) | Memory Usage (bytes)                  |
+|----------------------------------------------|---------------------|---------------------------------------|
+| SELECT faculties                             | 14.043              | 468560 (After: 20299872 - Before: 19831312) |
+| SELECT benefits                              | 21.393              | 282624                               |
+| SELECT dormitories (dormitory_id = '1')      | 105.249             | 260872 (heapUsed: 14896344 after response) |
+| SELECT price (price_id = '1')                | 9.623               | 173728 (heapUsed: 15069200)          |
+| SELECT dormitories (dormitory_id = '2')      | 5.9                 | 260848 (heapUsed: 15176792 after response) |
+| SELECT price (price_id = '2')                | 8.382               | 163504 (heapUsed: 15340296)          |
+| SELECT dormitories (dormitory_id = '2')      | 4.591               | -677992 (heapUsed: 14699400 after response) |
+| SELECT price (price_id = '2')                | 9.41                | 413000 (heapUsed: 15113000)          |
+| SELECT dormitories (dormitory_id = '4')      | 6.136               | 304816 (heapUsed: 15417616 after response) |
+| SELECT price (price_id = '4')                | 6.012               | 162056 (heapUsed: 15579672)          |
+| SELECT dormitories (dormitory_id = '4')      | 6.879               | 74520 (heapUsed: 15654192 after response) |
+| SELECT price (price_id = '4')                | 8.155               | 162688 (heapUsed: 15816880)          |
+| SELECT dormitories (dormitory_id = '6')      | 7.19                | -607600 (heapUsed: 15209280 after response) |
+| SELECT price (price_id = '8')                | 7.208               | 162736 (heapUsed: 15372016)          |
+| SELECT dormitories (dormitory_id = '6')      | 3.919               | 75384 (heapUsed: 15447400 after response) |
+| SELECT price (price_id = '8')                | 10.08               | 64336 (heapUsed: 15611752)           |
+| SELECT dormitories (dormitory_id = '11')     | 3.026               | 75384 (heapUsed: 15687136 after response) |
+| SELECT price (price_id = '8')                | 5.997               | 60072 (heapUsed: 15847208)           |
+| SELECT dormitories (dormitory_id = '11')     | 4.282               | 74152 (heapUsed: 15921360 after response) |
+| SELECT price (price_id = '8')                | 7.232               | 62072 (heapUsed: 16083432)           |
+| SELECT dormitories (dormitory_id = '12')     | 7.882               | -626968 (heapUsed: 15256464 after response) |
+| SELECT price (price_id = '8')                | 7 peasant           | 58584 (heapUsed: 15415048)           |
+| SELECT dormitories (dormitory_id = '12')     | 5.051               | 72464 (heapUsed: 15487512 after response) |
+| SELECT price (price_id = '8')                | 9.628               | 68336 (heapUsed: 15671392)           |
+| SELECT specialties (faculty_id = '6')        | 90.517              | 287816 (heapUsed: 15959208 after request) |
+| INSERT applications                          | 42.05               | Not specified                        |
+| SELECT faculties                             | 17.796              | 499136 (After: 20012360 - Before: 19513224) |
+| SELECT benefits                              | 21.592              | 266240                               |
+| SELECT specialties (faculty_id = '13')       | 226.318             | 327512 (heapUsed: 15023904 after request) |
+| INSERT applications                          | 46.127              | 648472 (After: 15770848 - Before: 15122376) |

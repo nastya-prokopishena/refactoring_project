@@ -10,7 +10,12 @@ const ROUTES = {
 };
 
 router.get(ROUTES.FACULTIES, async (req, res) => {
+  console.time('fetch_faculties_time');
+  const memoryBefore = process.memoryUsage().heapUsed;
   const { status, body } = await fetchData(Faculty, ['faculty_id', 'name']);
+  console.timeEnd('fetch_faculties_time');
+  const memoryAfter = process.memoryUsage().heapUsed;
+  console.log(`Memory Usage: Before: ${memoryBefore} After: ${memoryAfter}`);
   res.status(status).json(body);
 });
 

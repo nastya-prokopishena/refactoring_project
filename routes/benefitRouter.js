@@ -9,7 +9,15 @@ const ROUTES = {
 };
 
 router.get(ROUTES.BENEFITS, async (req, res) => {
+  console.time('fetch_benefits_time');
+  const beforeMemory = process.memoryUsage();
   const { status, body } = await fetchData(Benefit, ['benefit_id', 'name']);
+  const afterMemory = process.memoryUsage();
+  const memoryUsed = afterMemory.rss - beforeMemory.rss; 
+
+  console.timeEnd('fetch_benefits_time');
+  console.log(`Memory used: ${memoryUsed} bytes`);
+   
   res.status(status).json(body);
 });
 
