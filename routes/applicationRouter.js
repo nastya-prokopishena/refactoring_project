@@ -1,6 +1,5 @@
 const express = require('express');
 const { Faculty, Specialty, Benefit, Application } = require('../models');
-
 const router = express.Router();
 
 const ROUTES = {

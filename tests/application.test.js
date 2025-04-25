@@ -1,6 +1,6 @@
 const request = require('supertest');
 const express = require('express');
-const { Faculty, Specialty, Benefit, Application } = require('../models');
+const { Faculty, Specialty, Benefit } = require('../models');
 const { ApplicationData, router } = require('../routes/applicationRouter');
 
 jest.mock('../models');

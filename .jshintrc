@@ -1,8 +1,18 @@
 {
-    "node": true,
     "esversion": 12,
     "maxerr": 50,
     "complexity": true, 
     "undef": true,
-    "unused": true
+    "unused": true,
+    "env": {
+      "node": true,
+      "jest": true
+    },
+    "globals": {
+    "jest": true,
+    "describe": true,
+    "it": true,
+    "expect": true,
+    "beforeEach": true
   }
+}

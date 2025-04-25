@@ -12,17 +12,15 @@ router.get(ROUTES.SPECIALTIES, async (req, res) => {
   const facultyId = req.params.facultyId;
 
   try {
-    // Перевірка чи існує facultyId
     const faculty = await Faculty.findOne({
       where: { faculty_id: facultyId }
     });
     
-    // Replace Error Code with Exception
+    
     if (!faculty) {
       throw new Error(`Факультет з ID ${facultyId} не знайдено`);
     }
 
-    // Якщо facultyId існує, витягуємо спеціальності
     const specialties = await Specialty.findAll({
       where: { faculty_id: facultyId },
       attributes: ['specialty_id', 'name'] 
