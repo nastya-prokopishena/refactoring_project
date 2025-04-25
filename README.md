@@ -168,8 +168,8 @@
 
 ### Query Execution Times and Memory Usage
 
-| Query Description                             | Execution Time (ms) | Memory Usage (bytes)                  |
-|----------------------------------------------|---------------------|---------------------------------------|
+| Query Description                            | Execution Time (ms) | Memory Usage (bytes)                        |
+|----------------------------------------------|---------------------|---------------------------------------------|
 | SELECT faculties                             | 14.043              | 468560 (After: 20299872 - Before: 19831312) |
 | SELECT benefits                              | 21.393              | 282624                               |
 | SELECT dormitories (dormitory_id = '1')      | 105.249             | 260872 (heapUsed: 14896344 after response) |
