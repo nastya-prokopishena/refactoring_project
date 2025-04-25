@@ -134,17 +134,22 @@ const Price = sequelize.define('Price', {
 
 // Роути для отримання даних та обробки заявок
 app.get('/fetch-select-data/faculties', async (req, res) => {
+  console.time('fetch-faculties');
+  console.log('Memory Usage before faculties request:', process.memoryUsage());
   try {
     const faculties = await Faculty.findAll({ attributes: ['faculty_id', 'name'] });
     res.json(faculties);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+  console.log('Memory Usage after faculties request:', process.memoryUsage());
+  console.timeEnd('fetch-faculties');
 });
 
 app.get('/fetch-select-data/specialties/:facultyId', async (req, res) => {
   const facultyId = req.params.facultyId;
-
+  console.time('fetch-specialties');
+  console.log('Memory Usage before specialties request:', process.memoryUsage());
   try {
     // Перевірка чи існує facultyId
     const faculty = await Faculty.findOne({
@@ -164,6 +169,9 @@ app.get('/fetch-select-data/specialties/:facultyId', async (req, res) => {
     res.json(specialties);
   } catch (error) {
     res.status(500).json({ error: error.message });
+  } finally {
+      console.log('Memory Usage after specialties request:', process.memoryUsage());
+      console.timeEnd('fetch-specialties')
   }
 });
 
@@ -171,18 +179,23 @@ app.get('/fetch-select-data/specialties/:facultyId', async (req, res) => {
 
 
 app.get('/fetch-select-data/benefits', async (req, res) => {
+  console.time('fetch-benefits');
+  console.log('Memory Usage before benefits request:', process.memoryUsage());
   try {
     const benefits = await Benefit.findAll({ attributes: ['benefit_id', 'name'] });
     res.json(benefits);
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+  console.log('Memory Usage after benefits request:', process.memoryUsage());
+  console.timeEnd('fetch-benefits');
 });
 
 // Обробник запиту для отримання даних гуртожитків за ідентифікатором
 app.get('/fetch-select-data/dormitories/:dormitoryId', async (req, res) => {
   const dormitoryId = req.params.dormitoryId;
-
+  console.time('fetch-dormitories');
+  console.log('Memory Usage before dormitories request:', process.memoryUsage());
   try {
     const dormitoryData = await Dormitories.findOne({
       where: { dormitory_id: dormitoryId },
@@ -197,11 +210,14 @@ app.get('/fetch-select-data/dormitories/:dormitoryId', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+  console.log('Memory Usage after dormitories request:', process.memoryUsage());
+  console.timeEnd('fetch-dormitories');
 });
 
 app.get('/fetch-select-data/price/:priceId', async (req, res) => {
   const priceId = req.params.priceId;
-
+  console.time('fetch-price');
+  console.log('Memory Usage before price request:', process.memoryUsage());
   try {
     const priceData = await Price.findOne({
       where: { price_id: priceId },
@@ -216,11 +232,15 @@ app.get('/fetch-select-data/price/:priceId', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+  console.log('Memory Usage after price request:', process.memoryUsage());
+  console.timeEnd('fetch-price');
 });
 
 
 
 app.post('/submit_application', async (req, res) => {
+  console.time('submit-application');
+  console.log('Memory Usage before submit application request:', process.memoryUsage());
   try {
     const {
       first_name,
@@ -275,10 +295,14 @@ app.post('/submit_application', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
+  console.log('Memory Usage after submit application request:', process.memoryUsage());
+  console.timeEnd('submit-application');
 });
 
 
 app.get('/prices', async (req, res) => {
+  console.time('fetch-prices');
+  console.log('Memory Usage before prices request:', process.memoryUsage());
   try {
     const prices = await Price.findAll();
     res.json(prices);
@@ -286,6 +310,8 @@ app.get('/prices', async (req, res) => {
     console.error(err);
     res.status(500).send('Помилка сервера');
   }
+  console.log('Memory Usage after prices request:', process.memoryUsage());
+  console.timeEnd('fetch-prices');
 });
 
 // Підключення до бази даних та запуск сервера
